@@ -84,7 +84,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <ul class="menu" style="margin-top: 15px;">
                     <li class="mr-lg-4 mr-2 active"><a href="{{url('index')}}">Accueil</a></li>
                     <li class="mr-lg-4 mr-2"><a href="{{url('presentation')}}">Présentation</a></li>
-                    <li class="mr-lg-4 mr-2"><a href="{{url('contact')}}">Contact</a></li>
+                    <li class="mr-lg-4 mr-2"><a href="{{url('contacter')}}">Contact</a></li>
                 </ul>
             </nav>
             <!-- //nav -->

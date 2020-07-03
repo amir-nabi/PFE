@@ -1,6 +1,15 @@
 @extends('layout.master')
 @section('cssjs')
+<script>
+    function lettersOnly(input){
+	var regex=/^[1-9]/gi;
+	input.value = input.value.replace(regex,"");
+}
+</script>
 <style>
+
+
+    
     .containe{
         padding:5%;
         margin-left: 150px;
@@ -124,7 +133,7 @@ p{
 						<label>Nom</label>
 					</div>
 					<div class="col-md-8">
-						<input style="width:300px" type="text" name="nom" value="{{ $user->nom }}">
+						<input style="width:300px" type="text" onkeyup="lettersOnly(this)" name="nom" value="{{ $user->nom }}">
 					</div>
 				</div>
 				<div class="row mt-3">
@@ -132,7 +141,7 @@ p{
 						<label>Prénom</label>
 					</div>
 					<div class="col-md-8">
-						<input style="width:300px" type="text" name="prenom" value="{{ $user->prenom }}" required="">
+						<input style="width:300px" type="text" onkeyup="lettersOnly(this)" name="prenom" value="{{ $user->prenom }}" required="">
 					</div>
                 </div>
                 <div class="row mt-3">

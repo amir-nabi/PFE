@@ -34,7 +34,7 @@
 }
 
 .col-lg-3:hover .img-fluid {
-  opacity: 0.8;
+  opacity: 0.6;
 }
 
 .col-lg-3:hover .middle {
@@ -50,15 +50,24 @@
 </style>
 @endsection
 @section('contenu')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <div class="container">
 <hr>
 </div>
+@if ($message = Session::get('success'))
+<div class="alert alert-success">
+        <p>Message envoyé!</p> 
+        <button style="margin-top:-25px" type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span></button>
+    </div>
+    @endif
 <section class="news py-5" id="news">
         <div class="container py-lg-5" style="margin-top: -70px;">
             <div class="d-flex view">
                 <h3 class="heading mb-5">Liste des services</h3>
                 <div class="ml-auto">
-                    <a class="ratata" href="{{route('listeoffres.index')}}" style="margin-right:40px;transition:0.4s">Voir tout</a>
+                    <a class="ratata" href="{{route('listeoffres1')}}" style="margin-right:40px;transition:0.4s">Voir tout</a>
                 </div>
             </div>
 

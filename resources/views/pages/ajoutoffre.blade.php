@@ -1,5 +1,11 @@
 @extends('layout.master')
 @section('cssjs')
+<script>
+    function lettersOnly(input){
+	var regex=/^[1-9]/gi;
+	input.value = input.value.replace(regex,"");
+}
+</script>
 <style>
     .form-sec{background:#ccc; padding:15px;width: 800px;
     background: #f8f9fa;box-shadow: 0 0 4px #ccc;
@@ -37,12 +43,12 @@
         <div class="row">
           <div class="col">
             <label><b>Titre :</b></label>
-            <input type="text" class="form-control" name="titre" required="">
+            <input type="text" class="form-control" onkeyup="lettersOnly(this)" name="titre" required="">
           </div>
 
           <div class="col">
             <label><b>Secteur :</b></label>
-            <input type="text" class="form-control" name="secteur" required="">
+            <input type="text" class="form-control" onkeyup="lettersOnly(this)" name="secteur" required="">
           </div>
         
           <div class="col">
@@ -86,12 +92,12 @@
 
             <div class="col" id="startDate">
                 <label for="date_debut"><b>Date d'annonce :</b></label>
-                <input id="date_debut" type='date' class="form-control" name="date_debut" required=""/>
+                <input id="date_debut" type='date' class="form-control" name="date_debut"/>
             </div>
 
             <div class="col" id="startTime">
                     <label for="date_fin"><b>Date d'expiration :</b></label>
-                    <input id="date_fin" type='date' class="form-control" name="date_fin" required="" />
+                    <input id="date_fin" type='date' class="form-control" name="date_fin"/>
             </div>
         </div>
         

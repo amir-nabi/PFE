@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->integer('fax')->nullable();
             $table->string('adresse')->nullable();
             $table->string('role')->nullable();
+            $table->boolean('etat')->default(1);
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

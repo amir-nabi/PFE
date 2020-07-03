@@ -1,5 +1,7 @@
 @extends('layout.master')
 @section('contenu')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <div class="breadcrumb-agile mt-4">
         <div class="container">
             <ol class="breadcrumb">
@@ -10,6 +12,13 @@
             </ol>
         </div>
     </div>
+    @if ($message = Session::get('failed'))
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Whoops !<br></strong> Il y a eu quelques problèmes avec votre saisie. ( ˘︹˘ )
+        <button style="margin-top:12px"type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span></button>
+    </div>
+@endif
 
     <!-- login -->
     <section class="login py-5">

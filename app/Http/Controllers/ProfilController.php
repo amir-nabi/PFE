@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\User;
 use Image;
 use File;
-use Mail;
+use App\Offre;
+use DB;
+use Illuminate\Support\Facades\Auth as FacadesAuth;
 
 class ProfilController extends Controller
 {
@@ -67,10 +69,21 @@ class ProfilController extends Controller
     public function postconnexion(Request $request){
         $email=$request->email;
         $password=$request->password;
-        if (Auth::attempt(['email' => $email, 'password' => $password])) {
-            return redirect()->route('profile');
+        if (Auth::attempt(['email' => $email, 'password' => $password, 'etat' => 1])) {
+            return redirect()->route('profile')->with('success','czezzc');
         }
-        return redirect()->back();
+        return redirect()->back()->with('failed','zezvzc');
+    }
+
+    public function afficher_offres()
+    {
+        $offres=DB::table('historiques')->where('client_id',Auth::User()->id)->paginate(3);
+        return view('pages.listeoffres2',compact('offres'));
+    }
+    public function afficher_offre2($id)
+    {
+        $offre = Offre::findOrFail($id);
+        return view('pages.offreinfo',compact('offre'));
     }
     //
 }

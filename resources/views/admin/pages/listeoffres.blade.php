@@ -43,8 +43,8 @@
                     <td style="vertical-align: middle">{{$offre->titre}}</td>
                     <td style="vertical-align: middle">{{$offre->secteur}}</td>
                     <td style="vertical-align: middle">{{$offre->description}}</td>
-                    <td style="vertical-align: middle">{{$offre->prix}}</td>
-                    <td style="vertical-align: middle">{{$offre->solde}}</td>
+                    <td style="vertical-align: middle">{{$offre->prix}} DT</td>
+                    <td style="vertical-align: middle">{{$offre->solde}} DT</td>
                     @if (($offre->active) == 1)
                         <td style="vertical-align: middle">
                             <span style="font-weight:bolder; color:green">Activé</span></td>
@@ -66,6 +66,7 @@
               </tbody>
             </table>
             </div>
-	</div>
+    </div>
+    <div style="margin-left:430px">{{ $offres->links() }}</div>
 </div>
 @endsection

@@ -24,6 +24,19 @@
          name="Submit" style="border:0.5px solid black;margin-top:20px;margin-left:100px;font-size:30px"  > <i class="fa fa-reply" aria-hidden="true"></i></button>
     </div>
 <div class="col-md-9" style="margin-left:100px;margin-top:15px;">
+<br>
+<h4>❃ Les principales orientations du site :</h4><br>
+<p>⇝ Site d’information</p>
+<p>⇝ Support de communication</p>
+<p>⇝ Support de fidélisation</p>
+<p>⇝ Outil de prospection</p><br>
+<h4>❃ Les principaux résultats attendus :</h4><br>
+<p>⇝ Augmentation du chiffre d’affaire</p>
+<p>⇝ Augmentation du nombre de nouveaux prospects</p>
+<p>⇝ Fidélisation des clients existants</p>
+<p>⇝ Amélioration de l’image de l’entreprise</p>
+</p>
+<br>
 <h4>
 ❃ Données personnelles :
 </h4>

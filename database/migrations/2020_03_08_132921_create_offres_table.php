@@ -24,8 +24,8 @@ class CreateOffresTable extends Migration
             $table->double('prix');
             $table->double('solde')->nullable()->default(0);
             $table->boolean('active')->default(0);
-            $table->date('date_debut');
-            $table->date('date_fin');
+            $table->date('date_debut')->nullable();
+            $table->date('date_fin')->nullable();
             $table->unsignedBigInteger('user_id');
 
             $table->foreign('user_id')->references('id')->on('users');

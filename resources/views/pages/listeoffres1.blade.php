@@ -76,7 +76,6 @@
                 </thead>
                 <tbody>
                     @foreach ($offres as $offre)
-                    @if (($offre->user_id) == (Auth::user()->id))
                     <tr>
                         <td>{{ ++$i }}</td>
                         <td>{{ $offre->titre }}</td>
@@ -95,7 +94,6 @@
                                 @method('DELETE')
                                 <button style="width:35px" title="Supprimer"type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                             </form>
-                            @endif
                         </td>
                     </tr>
                     @endforeach
@@ -104,7 +102,5 @@
         </div>
     </div>
 </div>
-
 <div style="text-align:center">{{ $offres->links() }}</div>
-
 @endsection

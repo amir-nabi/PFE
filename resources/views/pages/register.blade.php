@@ -46,8 +46,19 @@ function lettersOnly(input){
 						<label>Adresse e-mail :</label>
 					</div>
 					<div class="col-md-8">
-						<input type="email" name="email" placeholder="exemple@yahoo.fr" required="">
+						<input type="email" class="form-control" name="email" placeholder="exemple@gmail.com" required="">
 					</div>
+				</div>
+				<div class="row mt-3">
+					<div class="col-md-4 text-md-right">
+						<label>Rôle :</label>
+					</div>
+					<div class="col-md-8">
+					<select class="form-control" name="role" required="">
+						<option value="Client">Client</option>
+						<option value="Fournisseur">Fournisseur</option>
+					</select>					
+				</div>
 				</div>
 				<div class="row mt-3">
 					<div class="col-md-4 text-md-right">

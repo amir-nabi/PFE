@@ -7,6 +7,8 @@ use App\Offre;
 use Image;
 use File;
 use Mail;
+use DB;
+use App\User;
 
 class OffreController extends Controller
 {
@@ -45,8 +47,6 @@ class OffreController extends Controller
             'categorie' => 'required',
             'image' => 'required|image',
             'prix' => 'required',
-            'date_debut' => 'required',
-            'date_fin' => 'required'
         ]);
     
         $formInput=$request->except('image');
@@ -57,6 +57,7 @@ class OffreController extends Controller
             $image->move('uploads/images/',$image_nom);
             $formInput['image']=$image_nom;
         }
+        
         Offre::create($formInput);
         return redirect()->route('listeoffres.index')
                         ->with('success','Service créé avec succès.');
@@ -100,33 +101,24 @@ class OffreController extends Controller
      */
     public function update(Request $request,Offre $offre,$id)
     {
-        $image_nom=$request->image;
-        $image=$request->file('image');
-        if($image != '')
-        {
+
             $request->validate([
                 'titre' => 'required',
                 'secteur' => 'required',
                 'categorie' => 'required',
-                'image' => 'required',
                 'prix' => 'required',
                 'date_debut' => 'required',
                 'date_fin' => 'required',
             ]);
-        $image_nom=rand() . '.' . $image->getClientOriginalExtension();
-        $image->move('/uploads/images/',$image_nom);
-        }
-        else
-        {
-        $request->validate([
-            'titre' => 'required',
-            'secteur' => 'required',
-            'categorie' => 'required',
-            'prix' => 'required',
-            'date_debut' => 'required',
-            'date_fin' => 'required'
-        ]);
-        }
+
+            
+        if($request->hasFile('image')){
+            $image=$request->file('image');
+            $extension=$request->file('image')->getClientOriginalExtension();
+            $image_nom= time() . '.' . $extension;
+            $image->move('uploads/images/',$image_nom);
+            $offre->image=$image_nom;
+
         $offre = array(
             'titre' => $request->titre,
             'secteur' => $request->secteur,
@@ -138,7 +130,21 @@ class OffreController extends Controller
             'date_debut' => $request->date_debut,
             'date_fin' => $request->date_fin,
         );
+    }
+    else{
+        $offre = array(
+            'titre' => $request->titre,
+            'secteur' => $request->secteur,
+            'categorie' => $request->categorie,
+            'description' => $request->description,
+            'prix' => $request->prix,
+            'solde' => $request->solde,
+            'date_debut' => $request->date_debut,
+            'date_fin' => $request->date_fin,
+        );
+    }
         Offre::whereId($id)->update($offre);
+
         return redirect()->route('listeoffres.index')
                         ->with('success','Service modifié avec succès.');
     }
@@ -147,7 +153,7 @@ class OffreController extends Controller
     {
         Offre::find($id)->delete();
         return redirect()->route('listeoffres.index')
-                        ->with('success','Service supprimé avec succès');
+                        ->with('success','Service supprimé avec succès.');
         //
     }
 }

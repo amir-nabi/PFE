@@ -67,12 +67,54 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+@if ($message = Session::get('success'))
+<div class="alert alert-success">
+        <strong>CONNECTÉ !<br></strong> Vous êtes le bienvenu. (◠‿◠) 
+        <button style="margin-top:-12px" type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span></button>
+    </div>
+    @endif
 <div class="container" style="margin-top:13px;border-top:2px solid orange; border-bottom:2px solid orange">
     <div class="row" style="margin-top:70px; margin-bottom:70px">
-   
+   @if ( Auth::user()->role == 'Client')
+   <div class="col-md-4">
+    <a href="{{url('profileinfo')}}">
+      <div class="card-counter primary">
+        <i class="fa fa-user"></i>
+        <span class="count-numbers">Mon Profil</span>
+        <span class="count-name"></span>
+      </div> 
+     </a>
+    </div>
+  
+
+    <div class="col-md-4">
+        <a href="{{url('charte')}}">
+      <div class="card-counter danger">
+        <i class="fa fa-ticket"></i>
+        <span class="count-numbers">Charte</span>
+        <span class="count-name"></span>
+      </div>
+    </a>
+    </div>
+
+    <div class="col-md-4">
+        <a href="{{route('afficher_offres')}}">
+      <div class="card-counter success">
+        <i class="fa fa-list"></i>
+        <span class="count-numbers">Liste Offres</span>
+        <span class="count-name"></span>
+      </div>
+    </a>
+    </div>
+
+    @else
+
     <div class="col-md-3">
     <a href="{{url('profileinfo')}}">
       <div class="card-counter primary">
@@ -113,6 +155,7 @@
       </div>
     </a>
     </div>
+    @endif
   </div>
 </div>
 

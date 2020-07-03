@@ -33,7 +33,7 @@
 
 <div class="form-sec">
   <h2 style="margin-left:260px;margin-bottom:10px"><b>Modifier le service</b></h2>
- <form action="{{ route('listeoffres.update',$offre->id) }}" method="POST">
+ <form action="{{ route('listeoffres.update',$offre->id) }}" method="POST" enctype="multipart/form-data">
 <div class="row">
 @csrf
      @method('PATCH')
@@ -66,7 +66,7 @@
         <div class="row">
           <div class="col">
             <label><b>Image :</b></label>
-            <input type="file" class="form-control" name="image" required="">
+            <input type="file" class="form-control" name="image" >  
           </div>
           <div class="col">
                  <img class="preview-img" style="margin-left:140px"src="/uploads/images/{{$offre->image}}" width="75" height="75"/>

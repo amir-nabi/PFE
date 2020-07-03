@@ -120,12 +120,22 @@
 
           <li class="nav-item has-treeview">
             <a href="{{route('afficher_fournisseur')}}" class="nav-link">
-              <i class="fa fa-users" aria-hidden="true"></i>
+              <i class="fa fa-user-o" aria-hidden="true"></i>
               <p>
                 Fournisseurs
                 <i class="right fas"></i>
               </p>
             </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="{{route('afficher_client')}}" class="nav-link">
+              <i class="fa fa-user-circle" aria-hidden="true"></i>
+              <p>
+                Clients
+                <i class="right fas"></i>
+              </p>
+            </a>
+          </li>
           <hr class="style-two">
           <li class="nav-item">
             <form action="{{route('deconnecter')}}">

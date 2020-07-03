@@ -66,7 +66,7 @@
             <table class="table">
                 <thead>
                     <tr class="filters">
-                       <th><input type="text" class="form-control" placeholder="N°" disabled></th>
+                       <th><input type="text" class="form-control" placeholder="ID" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Titre" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Secteur" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Prix" disabled></th>
@@ -76,26 +76,14 @@
                 </thead>
                 <tbody>
                     @foreach ($offres as $offre)
-                    @if (($offre->user_id) == (Auth::user()->id))
                     <tr>
-                        <td>{{ ++$i }}</td>
-                        <td>{{ $offre->titre }}</td>
-                        <td>{{ $offre->secteur }}</td>
-                        <td>{{ $offre->prix }} DT</td>
-                        @if(($offre->solde)==0) 
-                        <td>⌀</td>
-                        @else
-                        <td>{{ $offre->solde }} DT</td>
-                        @endif
+                        <td>{{ App\Offre::find($offre->offre_id)->id}}</td>
+                        <td>{{ App\Offre::find($offre->offre_id)->titre}}</td>
+                        <td>{{ App\Offre::find($offre->offre_id)->secteur}}</td>
+                        <td>{{ App\Offre::find($offre->offre_id)->prix}} DT</td>
+                        <td>{{ App\Offre::find($offre->offre_id)->solde}} DT</td>
                         <td>
-                            <form action="{{ route('listeoffres.destroy',$offre->id) }}" method="POST">
-                                <a class="btn btn-primary" title="Plus d'informations." style="width:35px" href="{{ route('listeoffres.show',$offre->id) }}"><i class="fa fa-info"></i></a>
-                                <a class="btn btn-warning" title="Éditer"style="width:35px" href="{{ route('listeoffres.edit',$offre->id) }}"><i class="fa fa-pencil"></i></a>
-                                @csrf
-                                @method('DELETE')
-                                <button style="width:35px" title="Supprimer"type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
-                            </form>
-                            @endif
+                            <a class="btn btn-warning" title="Plus d'informations." style="width:40px" href="{{route('afficher_offre2',$offre->offre_id)}}"><i class="fa fa-info"></i></a>
                         </td>
                     </tr>
                     @endforeach

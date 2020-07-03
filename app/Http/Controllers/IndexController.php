@@ -17,29 +17,8 @@ class IndexController extends Controller
     public function presentation(){
         return view ('pages.presentation');
     }
-    public function contact(){
-        return view('pages.contact');
-    }
     public function contacter(){
         return view('pages.contacter');
-    }
-    //Envoi email offre
-    public function postmailoffre(Request $request)
-    {
-        $email=$request->email;
-        $objet=$request->objet;
-        $msg=$request->msg;
-
-        $data=['email'=>$email,'objet'=>$objet,'msg' =>$msg];
-        
-        \Mail::send('postmailoffre', $data, function($message) use($email,$objet)
-        {
-            $message->subject($objet);
-            $message->to($email);
-            
-        });
-
-        return redirect()->back();
     }
     public function inscription(){
         return view('pages.register');
@@ -51,11 +30,12 @@ class IndexController extends Controller
         $user = new User();
         $user->nom=$request->nom;
         $user->prenom=$request->prenom;
+        $user->role=$request->role;
         $user->email=$request->email;
         $user->password=bcrypt($request->password);
         $user->save();
         Auth::login($user);
-        return redirect()->route('profile');
+        return redirect()->route('profile')->with('success','Compte créé avec succès.');
     }
     public function rechercher(Request $request)
     {
@@ -71,5 +51,12 @@ class IndexController extends Controller
             ->paginate(3);
 
             return view('pages.index',compact('offres'));
+    }
+    public function listeoffres1(){
+        $offres=DB::table('offres')->where('active',1)->get();
+        $offres = Offre::latest()->paginate(5);
+        return view('pages.listeoffres1',compact('offres'))
+        ->with('i', (request()->input('page', 1) - 1) * 5);
+
     }
 }

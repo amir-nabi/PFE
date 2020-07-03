@@ -20,6 +20,14 @@
             background-color: #ef5350;
             color: #FFF;
         }  
+        .card-counter.success{
+            background-color: #66bb6a;
+            color: #FFF;
+        }  
+        .card-counter.warning{
+            background-color: #f2bd4b;
+            color: #FFF;
+        }  
 
         .card-counter.info{
             background-color: #26c6da;
@@ -61,7 +69,7 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
 <div class="container">
-<h1 class="heading mb-sm-5 mb-4 text-center" style="margin-top: 10px;">Tableau de Bord</h1>
+<h1 class="heading mb-sm-5 mb-4 text-center" style="margin-top: 30px;">Tableau de Bord</h1>
     <div class="row">
    
     <div class="col-md-6">
@@ -75,16 +83,36 @@
     </div>
 
     <div class="col-md-6">
-        <a href="{{route('afficher_fournisseur')}}">
-      <div class="card-counter danger">
-      <i class="fa fa-users" aria-hidden="true"></i>
-        <span class="count-numbers"><b>{{$users}} fournisseurs</b></span>
+    <a href="{{route('afficher_fournisseur')}}">
+      <div class="card-counter success">
+      <i class="fa fa-user-o"></i>
+        <span class="count-numbers"><b>{{$fournisseurs}} fournisseurs</b></span>
         <span class="count-name">Liste des fournisseurs</span>
       </div>
     </a>
     </div>
-
   </div>
+  <div class="row" style="margin-top: 20px;">
+    <div class="col-md-6">
+    <a href="{{route('afficher_utilisateur')}}">
+      <div class="card-counter danger">
+      <i class="fa fa-users" aria-hidden="true"></i>
+        <span class="count-numbers"><b>{{$users}} utilisateurs</b></span>
+        <span class="count-name">Liste des utilisateurs</span>
+      </div>
+    </a>
+    </div>
+
+    <div class="col-md-6">
+    <a href="{{route('afficher_client')}}">
+      <div class="card-counter warning">
+      <i class="fa fa-user-circle" aria-hidden="true"></i>
+        <span class="count-numbers"><b>{{$clients}} clients</b></span>
+        <span class="count-name">Liste des clients</span>
+      </div>
+    </a>
+    </div>
+      </div>
 </div>
 
 @endsection

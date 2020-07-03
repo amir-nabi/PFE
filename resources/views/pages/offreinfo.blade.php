@@ -32,7 +32,11 @@
 <br>
           <img class="img-fluid" src="/uploads/images/{{$offre->image}}" width="350" height="250"/>
 <br>
-<a href="{{url('/contacter')}}">☛ Contacter fournisseur ☚</a>
+@if(Auth::check())
+<a href="{{route('contact',[$offre->user_id,$offre->id])}}">☛ Contacter fournisseur ☚</a>
+@else
+<a href="#" style="cursor: not-allowed;" title="Vous devez vous authentifier!">☛ Contacter fournisseur ☚</a>
+@endif
 <br>
   <table>
     <tr>
@@ -64,6 +68,18 @@
       @endif
     </tr>
   </table>
-        <h8>Date d'annonce: {{ $offre->date_debut }} | Date d'expiration: {{ $offre->date_fin }}</h8>
+@if(($offre->date_debut == NULL) && ($offre->date_fin == NULL))
+  <h8>Date d'annonce: ?? / ?? / ???? | Date d'expiration: ?? / ?? / ????</h8>
+@else
+@if (($offre->date_debut) && ($offre->date_fin == NULL))
+<h8>Date d'annonce: {{ $offre->date_debut }} | Date d'expiration: ?? / ?? / ????</h8>
+@else
+@if (($offre->date_debut == NULL) && ($offre->date_fin))
+<h8>Date d'annonce: ?? / ?? / ???? | Date d'expiration: {{ $offre->date_fin }}</h8>
+@else
+  <h8>Date d'annonce: {{ $offre->date_debut }} | Date d'expiration: {{ $offre->date_fin }}</h8>
+@endif
+@endif
+@endif
 </div>
 @endsection
