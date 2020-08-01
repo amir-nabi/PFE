@@ -35,7 +35,7 @@ class IndexController extends Controller
         $user->password=bcrypt($request->password);
         $user->save();
         Auth::login($user);
-        return redirect()->route('profile')->with('success','Compte créé avec succès.');
+        return redirect()->route('profile')->with('succes','Compte créé avec succès.');
     }
     public function rechercher(Request $request)
     {
@@ -53,10 +53,7 @@ class IndexController extends Controller
             return view('pages.index',compact('offres'));
     }
     public function listeoffres1(){
-        $offres=DB::table('offres')->where('active',1)->get();
-        $offres = Offre::latest()->paginate(5);
-        return view('pages.listeoffres1',compact('offres'))
-        ->with('i', (request()->input('page', 1) - 1) * 5);
-
+        $offres=DB::table('offres')->where('active','=',1)->paginate(5);
+        return view('pages.listeoffres1',compact('offres'));
     }
 }

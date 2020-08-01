@@ -11,6 +11,9 @@
     overflow:hidden;
     word-wrap: break-word;
   }
+  h8{
+    margin-left:20px;
+  }
 </style>
 @endsection
 @section('contenu')
@@ -59,7 +62,19 @@
   <div class="col-md-5">
   <img style="margin-top:25px;margin-left:30px"src="/uploads/images/{{$offre->image}}" width=200px height=270px/>
   </div>
-        <h8 style="margin-left:20px">Date d'annonce: {{ $offre->date_debut }} | Date d'expiration: {{ $offre->date_fin }}</h8>
+  @if(($offre->date_debut == NULL) && ($offre->date_fin == NULL))
+  <h8>Date d'annonce: ?? / ?? / ???? | Date d'expiration: ?? / ?? / ????</h8>
+@else
+@if (($offre->date_debut) && ($offre->date_fin == NULL))
+<h8>Date d'annonce: {{ $offre->date_debut }} | Date d'expiration: ?? / ?? / ????</h8>
+@else
+@if (($offre->date_debut == NULL) && ($offre->date_fin))
+<h8>Date d'annonce: ?? / ?? / ???? | Date d'expiration: {{ $offre->date_fin }}</h8>
+@else
+  <h8 >Date d'annonce: {{ $offre->date_debut }} | Date d'expiration: {{ $offre->date_fin }}</h8>
+@endif
+@endif
+@endif
 
     </div>
 @endsection

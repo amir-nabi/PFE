@@ -17,7 +17,7 @@ class AdminController extends Controller
     public function postloginadmin(Request $request){
         $email=$request->email;
         $password=$request->password;
-        $role="admin";
+        $role="Administrateur";
         if (Auth::attempt(['email' => $email, 'password' => $password, 'role' => $role])) {
             return redirect()->route('adminprofile');
         }
@@ -31,23 +31,19 @@ class AdminController extends Controller
         return view('admin.pages.index',compact('offres','users','fournisseurs','clients'));
     }
     public function affichelisteoffres(){
-        $offres=DB::table('offres')->get();
-        $offres = Offre::latest()->paginate(5);
+        $offres=DB::table('offres')->paginate(5);
         return view('admin.pages.listeoffres',compact('offres'));
             }
             public function affichelisteoffres1(){
-                $offres=DB::table('offres')->where('categorie','Embouteillage et conditionnement des liquides alimentaires')->get();
-                $offres = Offre::latest()->paginate(5);
+                $offres=DB::table('offres')->where('categorie','Embouteillage et conditionnement des liquides alimentaires')->paginate(5);
                 return view('admin.pages.listeoffres',compact('offres'));
                     }
             public function affichelisteoffres2(){
-                        $offres=DB::table('offres')->where('categorie','Injection et transformation des matières plastiques')->get();
-                        $offres = Offre::latest()->paginate(5);
+                        $offres=DB::table('offres')->where('categorie','Injection et transformation des matières plastiques')->paginate(5);
                         return view('admin.pages.listeoffres',compact('offres'));
                             }
             public function affichelisteoffres3(){
-                                $offres=DB::table('offres')->where('categorie','Traitement et le transport des fluides')->get();
-                                $offres = Offre::latest()->paginate(5);
+                                $offres=DB::table('offres')->where('categorie','Traitement et le transport des fluides')->paginate(5);
                                 return view('admin.pages.listeoffres',compact('offres'));
                                     }
     public function activer_offre($id)
@@ -70,18 +66,15 @@ class AdminController extends Controller
                                         return view('admin.pages.info_offre',compact('offre'));
                                     }
     public function afficher_utilisateur(){
-                                        $users=DB::table('users')->get();
-                                        $users = User::latest()->paginate(5);
+                                        $users=DB::table('users')->paginate(5);
                                             return view('admin.pages.fournisseurs',compact('users'));
                                     }
     public function afficher_fournisseur(){
-        $users=DB::table('users')->where('role','Fournisseur')->get();
-        $users = User::latest()->paginate(5);
+        $users=DB::table('users')->where('role','Fournisseur')->paginate(5);
             return view('admin.pages.fournisseurs',compact('users'));
     }
     public function afficher_client(){
-        $users=DB::table('users')->where('role','Client')->get();
-        $users = User::latest()->paginate(5);
+        $users=DB::table('users')->where('role','Client')->paginate(5);
             return view('admin.pages.fournisseurs',compact('users'));
     }
     public function activer_fournisseur($id)
@@ -103,7 +96,7 @@ class AdminController extends Controller
         return redirect()->route('login');
     }
     public function offres_de_fournisseur($id){
-        $offres=DB::table('offres')->where('user_id',$id)->get();
+        $offres=DB::table('offres')->where('user_id',$id)->paginate(5);
         return view('admin.pages.listeoffres',compact('offres'));
     }
 

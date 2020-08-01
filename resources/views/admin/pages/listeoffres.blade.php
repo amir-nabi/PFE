@@ -27,7 +27,6 @@
                       <th>ID</th>
                       <th>Titre</th>
                       <th>Secteur</th>
-                      <th>Description</th>
                       <th>Prix</th>
                       <th>Solde</th>  
                       <th>État</th>                  
@@ -42,7 +41,6 @@
                     <td style="vertical-align: middle">{{$offre->id}}</td>
                     <td style="vertical-align: middle">{{$offre->titre}}</td>
                     <td style="vertical-align: middle">{{$offre->secteur}}</td>
-                    <td style="vertical-align: middle">{{$offre->description}}</td>
                     <td style="vertical-align: middle">{{$offre->prix}} DT</td>
                     <td style="vertical-align: middle">{{$offre->solde}} DT</td>
                     @if (($offre->active) == 1)
@@ -52,8 +50,16 @@
                             <td style="vertical-align: middle">
                             <span style="font-weight:bolder; color:#de2e21">Désactivé</span></td>
                             @endif
+                            @if (($offre->date_debut) == NULL)
+                            <td> ?? / ?? / ???? </td>
+                            @else
                     <td style="vertical-align: middle">{{$offre->date_debut}}</td>
+                    @endif
+                    @if (($offre->date_fin) == NULL)
+                    <td> ?? / ?? / ???? </td>
+                    @else
                     <td style="vertical-align: middle">{{$offre->date_fin}}</td>
+                    @endif
                     <td>
                             <form action="{{ route('afficher_offre',$offre->id) }}" method="get">
                                 <button title="Plus d'informations."type="submit" class="btn btn-primary"><i class="fa fa-info"></i></button>

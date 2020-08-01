@@ -53,8 +53,8 @@
           <td style="vertical-align: middle">{{$user->email}}</td>
           <td style="vertical-align: middle">
           @if (($user->role) == 'Client')
-          <form action="#">
-            <button title="Voir tout ses offres." type="submit" class="btn btn-info" style="opacity:0.6"><i class="fa fa-address-card"></i></button>
+          <form>
+            <button title="C'est pas un fournisseur." type="submit" class="btn btn-info" style="cursor:not-allowed;opacity:0.6"><i class="fa fa-address-card"></i></button>
                                 <a class="btn btn-success" title="Réintégrer" href="{{ route('activer_fournisseur',$user->id) }}"><i class="fa fa-check"></i></a>
                                 <a class="btn btn-danger" title="Exclure" href="{{ route('desactiver_fournisseur',$user->id) }}"><i class="fa fa-ban"></i></a>
                                 </form>

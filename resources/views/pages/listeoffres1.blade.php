@@ -66,7 +66,7 @@
             <table class="table">
                 <thead>
                     <tr class="filters">
-                       <th><input type="text" class="form-control" placeholder="N°" disabled></th>
+                       <th><input type="text" class="form-control" placeholder="ID" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Titre" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Secteur" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Prix" disabled></th>
@@ -76,8 +76,9 @@
                 </thead>
                 <tbody>
                     @foreach ($offres as $offre)
+                    @if (($offre->active) == 1 && (Auth::user()->id == $offre->user_id))
                     <tr>
-                        <td>{{ ++$i }}</td>
+                        <td>{{ $offre->id }}</td>
                         <td>{{ $offre->titre }}</td>
                         <td>{{ $offre->secteur }}</td>
                         <td>{{ $offre->prix }} DT</td>
@@ -96,6 +97,28 @@
                             </form>
                         </td>
                     </tr>
+                    @else
+                    <tr>
+                        <td>{{ $offre->id }}</td>
+                        <td>{{ $offre->titre }}</td>
+                        <td>{{ $offre->secteur }}</td>
+                        <td>{{ $offre->prix }} DT</td>
+                        @if(($offre->solde)==0) 
+                        <td>⌀</td>
+                        @else
+                        <td>{{ $offre->solde }} DT</td>
+                        @endif
+                        <td>
+                            <form>
+                                <a class="btn btn-primary" title="Plus d'informations." style="width:35px" href="{{ route('listeoffres.show',$offre->id) }}"><i class="fa fa-info"></i></a>
+                                <a class="btn btn-warning" title="Éditer"style="opacity:0.6;width:35px;cursor:not-allowed" href="#"><i class="fa fa-pencil"></i></a>
+                                @csrf
+                                @method('DELETE')
+                                <button style="opacity:0.6;width:35px;cursor:not-allowed" title="Supprimer"type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                            </form>
+                        </td>
+                    </tr>
+                    @endif
                     @endforeach
                 </tbody>
             </table>

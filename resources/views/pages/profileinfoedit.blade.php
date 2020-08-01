@@ -118,7 +118,7 @@ p{
                     <h6 style="color:white;margin-top:0px">Mettre à jour<br><i class="fa fa-file-image-o" aria-hidden="true"></i></h6>
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 </div>
-<input style="width:100px; margin-top:40px;margin-left:276px" class="btn btn-primary btn-block" type="submit" value="Modifier">
+<input style="width:100px; margin-top:40px;margin-left:276px" class="btn btn-primary btn-block" type="submit" value="Éditer">
 </form>
 </div>
     <div class="col-md-6 details">

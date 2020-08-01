@@ -21,7 +21,6 @@ class CreateUsersTable extends Migration
             $table->integer('tel')->nullable();
             $table->integer('mobile')->nullable();
             $table->string('email');
-            $table->integer('fax')->nullable();
             $table->string('adresse')->nullable();
             $table->string('role')->nullable();
             $table->boolean('etat')->default(1);

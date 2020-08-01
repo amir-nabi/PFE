@@ -14,10 +14,10 @@ class UserSeeder extends Seeder
         //
         DB::table('users')->insert([
             'id'=>'1',
-            'nom'=>'',
+            'nom'=>'FS',
             'prenom'=>'Admin',
             'email'=>'admin@gmail.com',
-            'role'=>'admin',
+            'role'=>'Administrateur',
             'password'=>bcrypt('admin')
         ]);
     }

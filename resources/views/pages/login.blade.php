@@ -19,6 +19,13 @@
     <span aria-hidden="true">&times;</span></button>
     </div>
 @endif
+@if ($message = Session::get('fail'))
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Whoops !<br></strong> Vous êtes bloqué par l'administration FS pour le moment !
+        <button style="margin-top:12px"type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span></button>
+    </div>
+@endif
 
     <!-- login -->
     <section class="login py-5">

@@ -72,12 +72,16 @@ class ProfilController extends Controller
         if (Auth::attempt(['email' => $email, 'password' => $password, 'etat' => 1])) {
             return redirect()->route('profile')->with('success','czezzc');
         }
+        if (Auth::attempt(['email' => $email, 'password' => $password, 'etat' => 0])) {
+            Auth::logout();
+            return redirect()->back()->with('fail','czezzc');
+        }
         return redirect()->back()->with('failed','zezvzc');
     }
 
     public function afficher_offres()
     {
-        $offres=DB::table('historiques')->where('client_id',Auth::User()->id)->paginate(3);
+        $offres=DB::table('historiques')->where('client_id',Auth::User()->id)->paginate(5);
         return view('pages.listeoffres2',compact('offres'));
     }
     public function afficher_offre2($id)

@@ -66,7 +66,7 @@
             <table class="table">
                 <thead>
                     <tr class="filters">
-                       <th><input type="text" class="form-control" placeholder="N°" disabled></th>
+                       <th><input type="text" class="form-control" placeholder="ID" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Titre" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Secteur" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Prix" disabled></th>
@@ -78,7 +78,7 @@
                     @foreach ($offres as $offre)
                     @if (($offre->user_id) == (Auth::user()->id))
                     <tr>
-                        <td>{{ ++$i }}</td>
+                        <td>{{ $offre->id }}</td>
                         <td>{{ $offre->titre }}</td>
                         <td>{{ $offre->secteur }}</td>
                         <td>{{ $offre->prix }} DT</td>

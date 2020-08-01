@@ -9,6 +9,7 @@ use File;
 use Mail;
 use DB;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class OffreController extends Controller
 {
@@ -16,10 +17,8 @@ class OffreController extends Controller
     
     public function index()
     {
-        $offres = Offre::latest()->paginate(5);
-        return view('pages.listeoffres',compact('offres'))
-        ->with('i', (request()->input('page', 1) - 1) * 5);
-        //
+        $offres=DB::table('offres')->where('user_id','=',Auth::User()->id)->paginate(5);
+        return view('pages.listeoffres',compact('offres'));        //
     }
 
     /**
@@ -102,14 +101,6 @@ class OffreController extends Controller
     public function update(Request $request,Offre $offre,$id)
     {
 
-            $request->validate([
-                'titre' => 'required',
-                'secteur' => 'required',
-                'categorie' => 'required',
-                'prix' => 'required',
-                'date_debut' => 'required',
-                'date_fin' => 'required',
-            ]);
 
             
         if($request->hasFile('image')){

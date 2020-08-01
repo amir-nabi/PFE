@@ -97,7 +97,7 @@
     <a href="{{route('afficher_utilisateur')}}">
       <div class="card-counter danger">
       <i class="fa fa-users" aria-hidden="true"></i>
-        <span class="count-numbers"><b>{{$users}} utilisateurs</b></span>
+        <span class="count-numbers"><b>{{$users - 1}} utilisateurs</b></span>
         <span class="count-name">Liste des utilisateurs</span>
       </div>
     </a>

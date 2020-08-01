@@ -31,7 +31,7 @@
 <p>⇝ Support de fidélisation</p>
 <p>⇝ Outil de prospection</p><br>
 <h4>❃ Les principaux résultats attendus :</h4><br>
-<p>⇝ Augmentation du chiffre d’affaire</p>
+<p>⇝ Augmentation du chiffre d’affaires</p>
 <p>⇝ Augmentation du nombre de nouveaux prospects</p>
 <p>⇝ Fidélisation des clients existants</p>
 <p>⇝ Amélioration de l’image de l’entreprise</p>

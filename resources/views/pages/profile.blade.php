@@ -79,6 +79,13 @@
     <span aria-hidden="true">&times;</span></button>
     </div>
     @endif
+    @if ($message = Session::get('succes'))
+<div class="alert alert-success">
+        <strong>CONNECTÉ !<br></strong> Compte crée avec succès, vous êtes le bienvenu. (◠‿◠) 
+        <button style="margin-top:-12px" type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span></button>
+    </div>
+    @endif
 <div class="container" style="margin-top:13px;border-top:2px solid orange; border-bottom:2px solid orange">
     <div class="row" style="margin-top:70px; margin-bottom:70px">
    @if ( Auth::user()->role == 'Client')

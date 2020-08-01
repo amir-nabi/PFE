@@ -60,7 +60,8 @@
         
         <div class="form-group" style="margin-top:10px;margin-right:10px;margin-left:10px">
           <label><b>Description :</b></label>
-          <textarea name="description" class="form-control" placeholder="Optionnel"></textarea>
+          <textarea name="description" class="form-control" id="description" placeholder="Optionnel">{{$offre->description}}
+          </textarea>
         </div>
 
         <div class="row">
@@ -69,7 +70,7 @@
             <input type="file" class="form-control" name="image" >  
           </div>
           <div class="col">
-                 <img class="preview-img" style="margin-left:140px"src="/uploads/images/{{$offre->image}}" width="75" height="75"/>
+                 <img class="preview-img" style="margin-left:140px" src="/uploads/images/{{$offre->image}}" width="75" height="75"/>
           </div>
         </div>
         
@@ -91,13 +92,13 @@
         <!-- Date Picker -->
             <div class="col" id="startDate">
                 <label for="date_debut"><b>Date d'annonce :</b></label>
-                <input id="date_debut" type='date' value="{{ $offre->date_debut }}" class="form-control" name="date_debut" required=""/>
+                <input id="date_debut" type='date' value="{{ $offre->date_debut }}" class="form-control" name="date_debut"/>
             </div>
 
         <!-- Time Picker -->
             <div class="col" id="startTime">
                     <label for="date_fin"><b>Date d'expiration :</b></label>
-                    <input id="date_fin" type='date' value="{{ $offre->date_fin }}" class="form-control" name="date_fin" required="" />
+                    <input id="date_fin" type='date' value="{{ $offre->date_fin }}" class="form-control" name="date_fin" />
             </div>
         </div>
         
